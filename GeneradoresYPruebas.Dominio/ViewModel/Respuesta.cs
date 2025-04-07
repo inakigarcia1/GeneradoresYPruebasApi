@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace GeneradoresYPruebas.Dominio.ViewModel;
-public class MensajeCuadradoMedio
+public class Respuesta
 {
     public string Mensaje { get; set; }
     public List<double> Numeros { get; set; }
 
-    public MensajeCuadradoMedio(string mensaje, List<double> numeros)
+    public Respuesta(List<double> numeros, string mensaje = "")
     {
         Mensaje = mensaje;
         Numeros = numeros;

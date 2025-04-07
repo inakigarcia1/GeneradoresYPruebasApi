@@ -10,51 +10,84 @@ namespace GeneradoresYPruebas.Api.Controllers;
 [Route("aleatorio")]
 public class GeneradorDeNumerosController : ControllerBase
 {
-    public string Mensaje {  get; set; } = string.Empty;
-
     [HttpGet("cuadradosMedios")]
     public IActionResult CuadradosMedios(int m, int n, int tot)
     {
-        var numeros = ParteCentralDelCuadrado.ObtenerNumerosAleatorios(m, n, tot);
-        Mensaje = numeros.Last() == 0 ? "No se pueden generar más números." : "";
-        return Ok(new MensajeCuadradoMedio(
-            mensaje: Mensaje,
-            numeros: numeros));
+        try
+        {
+            var numeros = ParteCentralDelCuadrado.ObtenerNumerosAleatorios(m, n, tot);
+            if(numeros.Last() == 0)
+                return Ok(new Respuesta(mensaje: "No se pueden generar más números.", numeros: numeros));
+
+            return Ok(new Respuesta(numeros: numeros));
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+
     }
 
     [HttpGet("lehmer")]
     public IActionResult CalcularLehmer(int m, int t, int k, int tot)
     {
-        var numeros = Lehmer.ObtenerNumerosAleatorios(m, t, k, tot);
-        return Ok(new MensajeCuadradoMedio(
-            mensaje: Mensaje,
-            numeros: numeros));
+        try
+        {
+            var numeros = Lehmer.ObtenerNumerosAleatorios(m, t, k, tot);
+
+            if (numeros.Last() < 0)
+            {
+                numeros.RemoveAt(numeros.Count - 1);
+                return Ok(new Respuesta(mensaje: "No se pueden generar más números.", numeros: numeros));
+            }
+
+            return Ok(new Respuesta(numeros: numeros));
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 
     [HttpGet("congruencialMixto")]
     public IActionResult CalcularCongruencialMixto(double n, double a, double c, double m, int tot)
     {
-        var numeros = CongruencialMixto.ObtenerNumerosAleatorios(n, a, c, m, tot);
-        return Ok(new MensajeCuadradoMedio(
-            mensaje: Mensaje,
-            numeros: numeros));
+        try
+        {
+            var numeros = CongruencialMixto.ObtenerNumerosAleatorios(n, a, c, m, tot);
+            return Ok(new Respuesta(numeros: numeros));
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 
     [HttpGet("congruencialMultiplicativo")]
     public IActionResult CalcularCongruencialMultiplicativo(int n, int m, int a, int tot)
     {
-        var numeros = CongruencialMultiplicativo.ObtenerNumerosAleatorios(n, a, m, tot);
-        return Ok(new MensajeCuadradoMedio(
-            mensaje: Mensaje,
-            numeros: numeros));
+        try
+        {
+            var numeros = CongruencialMultiplicativo.ObtenerNumerosAleatorios(n, a, m, tot);
+            return Ok(new Respuesta(numeros: numeros));
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 
     [HttpPost("congruencialAditivo")]
     public IActionResult CalcularCongruencialMultiplicativo([FromBody] DatosCongruencialAditivo datos)
     {
-        var numeros = ConguencialAditivo.ObtenerNumerosAleatorios(datos.M, datos.Tot, datos.Semillas);
-        return Ok(new MensajeCuadradoMedio(
-            mensaje: Mensaje,
-            numeros: numeros));
+        try
+        {
+            var numeros = ConguencialAditivo.ObtenerNumerosAleatorios(datos.M, datos.Tot, datos.Semillas);
+            return Ok(new Respuesta(numeros: numeros));
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 }

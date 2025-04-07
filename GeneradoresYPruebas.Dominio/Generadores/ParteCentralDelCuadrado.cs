@@ -10,6 +10,12 @@ namespace GeneradoresYPruebas.Generadores
     {
         public static List<double> ObtenerNumerosAleatorios(int semilla, int numeroDigitosDeseados, int cantidadAGenerar)
         {
+            if (cantidadAGenerar < 0)
+                throw new InvalidDataException("La cantidad de números a generar no puede ser negativa.");
+
+            if (numeroDigitosDeseados > semilla.ToString().Length)
+                throw new InvalidDataException("La cantidad de dígitos a tomar debe ser menor o igual a la longitud de la semilla.");
+
             var numerosAleatorios = new List<double>();
 
             for (int i = 0; i < cantidadAGenerar; i++)
