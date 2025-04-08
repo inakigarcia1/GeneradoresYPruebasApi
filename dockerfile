@@ -1,16 +1,19 @@
 # Etapa de build
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /app
+WORKDIR /src
 
-COPY *.csproj ./
-RUN dotnet restore
+# .csproj primero
+COPY GeneradoresYPruebas.Api/*.csproj ./GeneradoresYPruebas.Api/
+RUN dotnet restore ./GeneradoresYPruebas.Api/GeneradoresYPruebas.Api.csproj
 
-COPY . ./
-RUN dotnet publish -c Release -o out
+# resto del código
+COPY GeneradoresYPruebas.Api ./GeneradoresYPruebas.Api
+WORKDIR /src/GeneradoresYPruebas.Api
+RUN dotnet publish -c Release -o /app/publish
 
-# Etapa de runtime
+# runtime
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
-COPY --from=build /app/out .
+COPY --from=build /app/publish .
 
 ENTRYPOINT ["dotnet", "GeneradoresYPruebas.Api.dll"]
