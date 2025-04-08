@@ -4,10 +4,17 @@ WORKDIR /src
 
 # .csproj primero
 COPY GeneradoresYPruebas.Api/*.csproj ./GeneradoresYPruebas.Api/
+COPY GeneradoresYPruebas.Dominio/*.csproj ./GeneradoresYPruebas.Dominio/
+
+
+# restaurar las dependencias
 RUN dotnet restore ./GeneradoresYPruebas.Api/GeneradoresYPruebas.Api.csproj
 
 # resto del código
 COPY GeneradoresYPruebas.Api ./GeneradoresYPruebas.Api
+COPY GeneradoresYPruebas.Dominio ./GeneradoresYPruebas.Dominio
+
+# compilar
 WORKDIR /src/GeneradoresYPruebas.Api
 RUN dotnet publish -c Release -o /app/publish
 
