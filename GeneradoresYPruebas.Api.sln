@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneradoresYPruebas.Api", "GeneradoresYPruebas.Api\GeneradoresYPruebas.Api.csproj", "{9DC4091E-9F8F-430C-A533-65127FD51399}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeneradoresYPruebas.Api", "GeneradoresYPruebas.Api\GeneradoresYPruebas.Api.csproj", "{9DC4091E-9F8F-430C-A533-65127FD51399}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneradoresYPruebas.Dominio", "GeneradoresYPruebas.Dominio\GeneradoresYPruebas.Dominio.csproj", "{DF272A30-EF89-4FA1-A983-CE3B230AC6B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeneradoresYPruebas.Dominio", "GeneradoresYPruebas.Dominio\GeneradoresYPruebas.Dominio.csproj", "{DF272A30-EF89-4FA1-A983-CE3B230AC6B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generadores.Tests", "Generadores.Tests\Generadores.Tests.csproj", "{33046A0F-578C-4945-AD02-8763D7C1D77D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generadores.Tests", "Generadores.Tests\Generadores.Tests.csproj", "{33046A0F-578C-4945-AD02-8763D7C1D77D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Api", "01. Api", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Dominio", "02. Dominio", "{47DC7FF1-9B69-4146-96F9-907E953DCBA2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03. Tests", "03. Tests", "{1E2A8932-29FA-4827-B9B3-B098C66C3E0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pruebas.Tests", "Pruebas.Tests\Pruebas.Tests.csproj", "{182959B4-E92D-48E3-BE0B-2E6F034F6523}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{33046A0F-578C-4945-AD02-8763D7C1D77D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33046A0F-578C-4945-AD02-8763D7C1D77D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33046A0F-578C-4945-AD02-8763D7C1D77D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{182959B4-E92D-48E3-BE0B-2E6F034F6523}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{182959B4-E92D-48E3-BE0B-2E6F034F6523}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{182959B4-E92D-48E3-BE0B-2E6F034F6523}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{182959B4-E92D-48E3-BE0B-2E6F034F6523}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +47,7 @@ Global
 		{9DC4091E-9F8F-430C-A533-65127FD51399} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{DF272A30-EF89-4FA1-A983-CE3B230AC6B1} = {47DC7FF1-9B69-4146-96F9-907E953DCBA2}
 		{33046A0F-578C-4945-AD02-8763D7C1D77D} = {1E2A8932-29FA-4827-B9B3-B098C66C3E0A}
+		{182959B4-E92D-48E3-BE0B-2E6F034F6523} = {1E2A8932-29FA-4827-B9B3-B098C66C3E0A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {83D71833-4014-4B9F-966D-F1E7B23E37B6}
