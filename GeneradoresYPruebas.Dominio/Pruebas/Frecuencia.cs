@@ -3,41 +3,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading.Tasks.Sources;
 
 namespace GeneradoresYPruebas.Dominio.Pruebas;
 public class Frecuencia
 {
-    public static bool EsAleatorio(int x, double estadistico, params double[] valoresU)
+    public static (bool esAleatorio, double estadistico) EsAleatorio(int x, double comparador, params double[] valoresU)
     {
         var n = valoresU.Length;
+        var listaU = new List<double>(valoresU).Order().ToList();
         var tamañoIntervalo = 1 / (double)x;
         var frecuenciaEsperada = n / (double)x;
 
-        var intervalos = new List<double>();
-
-        var frecuenciasObservadas = new Dictionary<int, int>();
+        var frecuenciasObservadas = new Dictionary<int, int>(x);
+        int numeroIntervalo = 1;
         for (double i = 0; i <= 1; i += tamañoIntervalo)
         {
-            intervalos.Add(i);
-        }
-
-        for(int i = 1; i <= x; i++)
-        {
-            frecuenciasObservadas.Add(i, 0);
-        }
-
-
-        for (int i = 0; i < x; i++)
-        {
-            for(int j = 0; i < valoresU.Length; j++)
+            for (int j = 0; j < listaU.Count; j++)
             {
-                if (valoresU[i] > intervalos[i] && valoresU[i] < intervalos[i + 1])
+                if (listaU[j] > i && listaU[j] < i + tamañoIntervalo)
                 {
-
+                    if (!frecuenciasObservadas.TryAdd(numeroIntervalo, 1))
+                    {
+                        frecuenciasObservadas[numeroIntervalo]++;
+                    }
                 }
             }
+            numeroIntervalo++;
         }
 
-        return true;
+        double sumatoria = 0;
+        foreach (var observacion in frecuenciasObservadas)
+        {
+            sumatoria += Math.Pow(observacion.Value - frecuenciaEsperada, 2);
+        }
+
+        var chiCuadrado = ((double) x /n) * sumatoria;
+
+        return (chiCuadrado < comparador, chiCuadrado);
     }
 }

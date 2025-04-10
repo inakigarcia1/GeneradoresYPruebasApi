@@ -24,10 +24,10 @@ namespace GeneradoresYPruebas.Api
             });
 
 
-            builder.WebHost.ConfigureKestrel(serverOptions =>
-            {
-                serverOptions.ListenAnyIP(80);
-            });
+            //builder.WebHost.ConfigureKestrel(serverOptions =>
+            //{
+            //    serverOptions.ListenAnyIP(80);
+            //});
 
             var app = builder.Build();
 
