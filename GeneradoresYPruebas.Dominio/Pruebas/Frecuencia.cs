@@ -17,17 +17,15 @@ public class Frecuencia
 
         var frecuenciasObservadas = new Dictionary<int, int>(x);
         int numeroIntervalo = 1;
+
         for (double i = 0; i <= 1; i += tamañoIntervalo)
         {
             for (int j = 0; j < listaU.Count; j++)
             {
-                if (listaU[j] > i && listaU[j] < i + tamañoIntervalo)
-                {
-                    if (!frecuenciasObservadas.TryAdd(numeroIntervalo, 1))
-                    {
-                        frecuenciasObservadas[numeroIntervalo]++;
-                    }
-                }
+                if (listaU[j] < i || listaU[j] > i + tamañoIntervalo) continue;
+                if (frecuenciasObservadas.TryAdd(numeroIntervalo, 1)) continue;
+
+                frecuenciasObservadas[numeroIntervalo]++;
             }
             numeroIntervalo++;
         }
@@ -38,7 +36,7 @@ public class Frecuencia
             sumatoria += Math.Pow(observacion.Value - frecuenciaEsperada, 2);
         }
 
-        var chiCuadrado = ((double) x /n) * sumatoria;
+        var chiCuadrado = ((double)x / n) * sumatoria;
 
         return (chiCuadrado < comparador, chiCuadrado);
     }
