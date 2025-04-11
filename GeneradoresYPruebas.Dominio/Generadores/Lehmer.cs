@@ -14,11 +14,11 @@ public class Lehmer
         if (k >= semilla) throw new InvalidDataException("K debe ser menor que la semilla.");
 
         var numerosAleatorios = new List<double>();
-        (double numero, bool esUltimo) resultado;
+        (double numero, bool esUltimo) resultado = (semilla, false);
 
         for (double i = 0; i < cantidadDeNumerosAGenerar; i++)
         {
-            resultado = ObtenerSiguienteNumero(semilla, t, k);
+            resultado = ObtenerSiguienteNumero(resultado.numero, t, k);
 
             if (resultado.esUltimo)
             {
