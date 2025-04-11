@@ -22,7 +22,7 @@ namespace GeneradoresYPruebas.Generadores
             {
                 if(semilla == 0) break;
                 semilla = ObtenerSiguienteNumero(semilla, numeroDigitosDeseados);
-                numerosAleatorios.Add(Math.Round(semilla / Math.Pow(10, numeroDigitosDeseados), 3));
+                numerosAleatorios.Add(Math.Round(semilla / Math.Pow(10, numeroDigitosDeseados), 6));
             }
 
             return numerosAleatorios;

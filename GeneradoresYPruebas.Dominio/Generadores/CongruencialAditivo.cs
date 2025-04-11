@@ -24,7 +24,7 @@ public class CongruencialAditivo
         {
             resto = (double)ObtenerSiguienteResto(resto, m, k, i, diccionarioN);
             diccionarioN.Add((double)i + 1, resto);
-            numerosAleatorios.Add(Math.Round((double)resto / m, 3));
+            numerosAleatorios.Add(Math.Round((double)resto / m, 6));
         }
 
         return numerosAleatorios;

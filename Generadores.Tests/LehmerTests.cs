@@ -8,4 +8,9 @@ namespace Generadores.Tests;
 [TestClass]
 public class LehmerTests
 {
+    [TestMethod]
+    public void NumerosRepetidosTest()
+    {
+
+    }
 }

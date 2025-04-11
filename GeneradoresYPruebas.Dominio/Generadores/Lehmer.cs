@@ -26,7 +26,7 @@ public class Lehmer
                 break;
             }
 
-            numerosAleatorios.Add(Math.Round(resultado.numero / Math.Pow(10, resultado.numero.ToString().Length), 3));
+            numerosAleatorios.Add(Math.Round(resultado.numero / Math.Pow(10, resultado.numero.ToString().Length), 6));
         }
 
         return numerosAleatorios;

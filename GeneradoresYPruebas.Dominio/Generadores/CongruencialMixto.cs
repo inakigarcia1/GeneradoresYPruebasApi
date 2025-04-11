@@ -14,7 +14,7 @@ public class CongruencialMixto
         for (double i = 0; i < cantidadDeNumerosAGenerar; i++)
         {
             semilla = (double) ObtenerSiguienteResto(semilla, a, c, m);
-            numerosAleatorios.Add(Math.Round((double)semilla / m, 3));
+            numerosAleatorios.Add(Math.Round((double)semilla / m, 6));
         }
 
         return numerosAleatorios;
