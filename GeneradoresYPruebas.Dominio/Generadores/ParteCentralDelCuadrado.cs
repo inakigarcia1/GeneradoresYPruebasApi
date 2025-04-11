@@ -46,7 +46,7 @@ namespace GeneradoresYPruebas.Generadores
             int mitad = longitud / 2;
             int moverAlCostado = EsPar(longitud) ? (numeroDigitosDeseados / 2) - 1 : (numeroDigitosDeseados / 2);
 
-            return int.Parse(textoDeNumeros.Substring(mitad - moverAlCostado, numeroDigitosDeseados));
+            return int.Parse(textoDeNumeros.Substring(mitad - 1 - moverAlCostado, numeroDigitosDeseados));
         }
         private static bool EsPar(int numero) => numero % 2 == 0;
     }
