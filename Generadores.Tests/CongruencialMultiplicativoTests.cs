@@ -14,10 +14,10 @@ public class CongruencialMultiplicativoTests
     public void DiapositivaTest()
     {
         // Arrange
-        int semilla = 1317;
-        int a = 5631;
-        int m = 547;
-        int cantidadAGenerar = 6;
+        double semilla = 1317;
+        double a = 5631;
+        double m = 547;
+        double cantidadAGenerar = 6;
         var esperados = new List<double>([0.636, 0.427, 0.873, 0.691, 0.257, 0.500]);
 
 
@@ -25,9 +25,9 @@ public class CongruencialMultiplicativoTests
         var numeros = CongruencialMultiplicativo.ObtenerNumerosAleatorios(semilla, a, m, cantidadAGenerar);
 
         // Assert
-        for(int i = 0; i < esperados.Count; i++)
+        for(double i = 0; i < (double)esperados.Count; i++)
         {
-            Assert.AreEqual(esperados[i], numeros[i], 0.002);
+            Assert.AreEqual(esperados[(int)i], numeros[(int)i], 0.002);
         }
        
     }

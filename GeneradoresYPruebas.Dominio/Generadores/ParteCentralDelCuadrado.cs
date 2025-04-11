@@ -8,17 +8,17 @@ namespace GeneradoresYPruebas.Generadores
 {
     public class ParteCentralDelCuadrado
     {
-        public static List<double> ObtenerNumerosAleatorios(int semilla, int numeroDigitosDeseados, int cantidadAGenerar)
+        public static List<double> ObtenerNumerosAleatorios(double semilla, double numeroDigitosDeseados, double cantidadAGenerar)
         {
             if (cantidadAGenerar < 0)
                 throw new InvalidDataException("La cantidad de números a generar no puede ser negativa.");
 
-            if (numeroDigitosDeseados > semilla.ToString().Length)
-                throw new InvalidDataException("La cantidad de dígitos a tomar debe ser menor o igual a la longitud de la semilla.");
+            if (numeroDigitosDeseados > (double) semilla.ToString().Length)
+                throw new InvalidDataException("La cantidad de dígitos a tomar debe ser menor o igual a la doubleitud de la semilla.");
 
             var numerosAleatorios = new List<double>();
 
-            for (int i = 0; i < cantidadAGenerar; i++)
+            for (double i = 0; i < cantidadAGenerar; i++)
             {
                 if(semilla == 0) break;
                 semilla = ObtenerSiguienteNumero(semilla, numeroDigitosDeseados);
@@ -27,27 +27,35 @@ namespace GeneradoresYPruebas.Generadores
 
             return numerosAleatorios;
         }
-        private static int ObtenerSiguienteNumero(int semilla, int numeroDigitosDeseados)
+        private static double ObtenerSiguienteNumero(double semilla, double numeroDigitosDeseados)
         {
-            int x = (int)Math.Pow(semilla, 2);
-            int longitudX = (int)Math.Floor(Math.Log10(x) + 1);
+            double x = (double)Math.Pow(semilla, 2);
+            double doubleitudX = (double)Math.Floor(Math.Log10(x) + 1);
 
-            if (!EsPar(longitudX - numeroDigitosDeseados))
+            if (!EsPar(doubleitudX - numeroDigitosDeseados))
             {
                 x *= 10;
             }
 
-            return TomarDelMedio(x, numeroDigitosDeseados);
+            var numero = TomarDelMedio(x, numeroDigitosDeseados);
+            return numero;
         }
-        private static int TomarDelMedio(int x, int numeroDigitosDeseados)
+        private static double TomarDelMedio(double x, double numeroDigitosDeseados)
         {
             var textoDeNumeros = x.ToString();
-            var longitud = textoDeNumeros.Length;
-            int mitad = longitud / 2;
-            int moverAlCostado = EsPar(longitud) ? (numeroDigitosDeseados / 2) - 1 : (numeroDigitosDeseados / 2);
+            double doubleitud = (double) textoDeNumeros.Length;
+            double mitad = doubleitud / 2;
+            double moverAlCostado = EsPar(doubleitud) ? (numeroDigitosDeseados / 2) - 1 : (numeroDigitosDeseados / 2);
 
-            return int.Parse(textoDeNumeros.Substring(mitad - 1 - moverAlCostado, numeroDigitosDeseados));
+            if (EsPar(doubleitud))
+            {
+                return double.Parse(textoDeNumeros.Substring((int)(mitad - 1 - moverAlCostado), (int)numeroDigitosDeseados));
+            }
+            else
+            {
+                return double.Parse(textoDeNumeros.Substring((int)(mitad - moverAlCostado), (int)numeroDigitosDeseados));
+            }
         }
-        private static bool EsPar(int numero) => numero % 2 == 0;
+        private static bool EsPar(double numero) => numero % 2 == 0;
     }
 }

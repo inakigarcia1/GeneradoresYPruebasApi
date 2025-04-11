@@ -13,20 +13,20 @@ public class CongruencialAditivoTests
     public void DiapositivaTest()
     {
         // Arrange
-        int m = 5147;
-        int cantidadAGenerar = 5;
-        int[] valoresN = [3317, 5131, 2372, 1942];
+        double m = 5147;
+        double cantidadAGenerar = 5;
+        double[] valoresN = [3317, 5131, 2372, 1942];
 
         var esperados = new List<double>([0.021, 0.482, 0.479, 0.123, 0.145]);
 
 
         // Act
-        var numeros = ConguencialAditivo.ObtenerNumerosAleatorios(m, cantidadAGenerar, valoresN);
+        var numeros = CongruencialAditivo.ObtenerNumerosAleatorios(m, cantidadAGenerar, valoresN);
 
         // Assert
-        for (int i = 0; i < esperados.Count; i++)
+        for (double i = 0; i < (double)esperados.Count; i++)
         {
-            Assert.AreEqual(esperados[i], numeros[i], 0.002);
+            Assert.AreEqual(esperados[(int)i], numeros[(int)i], 0.002);
         }
     }
 
@@ -34,20 +34,20 @@ public class CongruencialAditivoTests
     public void TpTest()
     {
         // Arrange
-        int m = 5147;
-        int cantidadAGenerar = 8;
-        int[] valoresN = [3317, 5131, 2372, 1942];
+        double m = 5147;
+        double cantidadAGenerar = 8;
+        double[] valoresN = [3317, 5131, 2372, 1942];
 
         var esperados = new List<double>([0.021, 0.482, 0.479, 0.123, 0.145, 0.628, 0.107, 0.231]);
 
 
         // Act
-        var numeros = ConguencialAditivo.ObtenerNumerosAleatorios(m, cantidadAGenerar, valoresN);
+        var numeros = CongruencialAditivo.ObtenerNumerosAleatorios(m, cantidadAGenerar, valoresN);
 
         // Assert
-        for (int i = 0; i < esperados.Count; i++)
+        for (double i = 0; i < (double)esperados.Count; i++)
         {
-            Assert.AreEqual(esperados[i], numeros[i], 0.002);
+            Assert.AreEqual(esperados[(int)i], numeros[(int)i], 0.002);
         }
     }
 }

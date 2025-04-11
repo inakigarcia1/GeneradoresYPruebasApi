@@ -2,11 +2,11 @@
 
 public class DatosCongruencialAditivo
 {
-    public int M {  get; set; }
-    public int Tot {  get; set; }
-    public int[] Semillas { get; set; }
+    public double M {  get; set; }
+    public double Tot {  get; set; }
+    public double[] Semillas { get; set; }
 
-    public DatosCongruencialAditivo(int m, int tot, params int[] semillas)
+    public DatosCongruencialAditivo(double m, double tot, params double[] semillas)
     {
         M = m;
         Tot = tot;

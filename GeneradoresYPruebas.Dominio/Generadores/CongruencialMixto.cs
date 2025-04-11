@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 namespace GeneradoresYPruebas.Generadores;
 public class CongruencialMixto
 {
-    public static List<double> ObtenerNumerosAleatorios(double semilla, double a, double c, double m, int cantidadDeNumerosAGenerar)
+    public static List<double> ObtenerNumerosAleatorios(double semilla, double a, double c, double m, double cantidadDeNumerosAGenerar)
     {
         var numerosAleatorios = new List<double>();
 
-        for (int i = 0; i < cantidadDeNumerosAGenerar; i++)
+        for (double i = 0; i < cantidadDeNumerosAGenerar; i++)
         {
-            semilla = (int) ObtenerSiguienteResto(semilla, a, c, m);
+            semilla = (double) ObtenerSiguienteResto(semilla, a, c, m);
             numerosAleatorios.Add(Math.Round((double)semilla / m, 3));
         }
 

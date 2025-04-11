@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 namespace GeneradoresYPruebas.Dominio.Generadores;
 public class CongruencialMultiplicativo
 {
-    public static List<double> ObtenerNumerosAleatorios(double semilla, double a, double m, int cantidadDeNumerosAGenerar)
+    public static List<double> ObtenerNumerosAleatorios(double semilla, double a, double m, double cantidadDeNumerosAGenerar)
     {
         var numerosAleatorios = new List<double>();
 
-        for (int i = 0; i < cantidadDeNumerosAGenerar; i++)
+        for (double i = 0; i < cantidadDeNumerosAGenerar; i++)
         {
-            semilla = (int)ObtenerSiguienteResto(semilla, a, m);
+            semilla = (double)ObtenerSiguienteResto(semilla, a, m);
             numerosAleatorios.Add(Math.Round((double)semilla / m, 3));
         }
 

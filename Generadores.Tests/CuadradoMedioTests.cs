@@ -9,9 +9,9 @@ public sealed class CuadradoMedioTests
     public void DiapositivaTest()
     {
         // Arrange
-        int semilla = 123;
-        int n = 3;
-        int cantidadAGenerar = 4;
+        double semilla = 123;
+        double n = 3;
+        double cantidadAGenerar = 4;
 
 
         // Act
@@ -25,9 +25,9 @@ public sealed class CuadradoMedioTests
     public void SinMasNumerosTest()
     {
         // Arrange
-        int semilla = 123;
-        int n = 3;
-        int cantidadAGenerar = 15;
+        double semilla = 123;
+        double n = 3;
+        double cantidadAGenerar = 15;
 
 
         // Act
@@ -41,9 +41,9 @@ public sealed class CuadradoMedioTests
     public void OtroProgramaTest()
     {
         // Arrange
-        int semilla = 1234;
-        int n = 2;
-        int cantidadAGenerar = 7;
+        double semilla = 1234;
+        double n = 2;
+        double cantidadAGenerar = 7;
 
 
         // Act
@@ -53,7 +53,7 @@ public sealed class CuadradoMedioTests
         var esperados = new List<double>([0.27, 0.29, 0.41, 0.68, 0.62, 0.84, 0.05]);
 
         // Assert
-        for (int i = 0; i < esperados.Count; i++)
+        for (int i = 0; i <esperados.Count; i++)
         {
             Assert.AreEqual(esperados[i], numeros[i], 0.01);
         }

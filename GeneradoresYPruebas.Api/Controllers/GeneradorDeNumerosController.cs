@@ -11,7 +11,7 @@ namespace GeneradoresYPruebas.Api.Controllers;
 public class GeneradorDeNumerosController : ControllerBase
 {
     [HttpGet("cuadradosMedios")]
-    public IActionResult CuadradosMedios(int m, int n, int tot)
+    public IActionResult CuadradosMedios(double m, double n, double tot)
     {
         try
         {
@@ -29,7 +29,7 @@ public class GeneradorDeNumerosController : ControllerBase
     }
 
     [HttpGet("lehmer")]
-    public IActionResult CalcularLehmer(int m, int t, int k, int tot)
+    public IActionResult CalcularLehmer(double m, double t, double k, double tot)
     {
         try
         {
@@ -50,7 +50,7 @@ public class GeneradorDeNumerosController : ControllerBase
     }
 
     [HttpGet("congruencialMixto")]
-    public IActionResult CalcularCongruencialMixto(double n, double a, double c, double m, int tot)
+    public IActionResult CalcularCongruencialMixto(double n, double a, double c, double m, double tot)
     {
         try
         {
@@ -64,7 +64,7 @@ public class GeneradorDeNumerosController : ControllerBase
     }
 
     [HttpGet("congruencialMultiplicativo")]
-    public IActionResult CalcularCongruencialMultiplicativo(int n, int m, int a, int tot)
+    public IActionResult CalcularCongruencialMultiplicativo(double n, double m, double a, double tot)
     {
         try
         {
@@ -82,7 +82,7 @@ public class GeneradorDeNumerosController : ControllerBase
     {
         try
         {
-            var numeros = ConguencialAditivo.ObtenerNumerosAleatorios(datos.M, datos.Tot, datos.Semillas);
+            var numeros = CongruencialAditivo.ObtenerNumerosAleatorios(datos.M, datos.Tot, datos.Semillas);
             return Ok(new Respuesta(numeros: numeros));
         }
         catch (Exception ex)
