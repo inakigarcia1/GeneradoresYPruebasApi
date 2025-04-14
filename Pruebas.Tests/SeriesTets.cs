@@ -28,7 +28,7 @@ namespace Pruebas.Tests
             double chiCuadradoCritico = 0.675;
 
             // Act
-            var (esAleatorio, estadistico) = Series.EsAleatorio(x, chiCuadradoCritico, valoresU);
+            var (esAleatorio, estadistico) = Series.EsAleatorio(x, chiCuadradoCritico, 6, valoresU);
 
             // Assert
             Assert.IsTrue(esAleatorio, "La prueba no pasó el umbral de chi cuadrado crítico.");

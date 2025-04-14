@@ -8,9 +8,8 @@ namespace GeneradoresYPruebas.Dominio.Pruebas
 {
     public class Series
     {
-        public static (bool esAleatorio, double estadistico) EsAleatorio(double x, double comparador, params double[] valoresU)
+        public static (bool esAleatorio, double estadistico) EsAleatorio(double x, double comparador, double n, params double[] valoresU)
         {
-            int n = valoresU.Length / 2; // número de pares
             int xCuadrado = (int)(x * x);
             double frecuenciaEsperada = n / (double)xCuadrado;
 

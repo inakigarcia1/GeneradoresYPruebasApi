@@ -35,15 +35,72 @@ public class PruebasEstadisticasController : ControllerBase
     {
         try
         {
-            var resultado = Frecuencia.EsAleatorio(datosPruebaFrecuencia.X, datosPruebaFrecuencia.Comparador, datosPruebaFrecuencia.ValoresU);
+            var (esAleatorio, estadistico) = Frecuencia.EsAleatorio(datosPruebaFrecuencia.X, datosPruebaFrecuencia.Comparador, datosPruebaFrecuencia.ValoresU);
             var response = new
             {
-                EsAleatorio = resultado.esAleatorio,
-                Estadistico = resultado.estadistico,
+                EsAleatorio = esAleatorio,
+                Estadistico = estadistico,
             };
             return Ok(response);
         }
         catch(Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [HttpPost("series")]
+    public IActionResult PruebaDeLaSerie([FromBody] DatosPruebaSerie datosPruebaSerie)
+    {
+        try
+        {
+            var (esAleatorio, estadistico) = Series.EsAleatorio(datosPruebaSerie.X, datosPruebaSerie.Comparador, datosPruebaSerie.N, datosPruebaSerie.ValoresU);
+            var response = new
+            {
+                EsAleatorio = esAleatorio,
+                Estadistico = estadistico,
+            };
+            return Ok(response);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [HttpPost("ks")]
+    public IActionResult PruebaDeKs([FromBody] DatosPruebaKs datosPruebaKs)
+    {
+        try
+        {
+            var (esAleatorio, estadistico) = Ks.EsAleatorio(datosPruebaKs.Comparador, datosPruebaKs.ValoresU);
+            var response = new
+            {
+                EsAleatorio = esAleatorio,
+                Estadistico = estadistico,
+            };
+            return Ok(response);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [HttpPost("corrida")]
+    public IActionResult PruebaDeCorrida([FromBody] DatosPruebaCorrida datosPruebaCorrida)
+    {
+        try
+        {
+            var (esAleatorio, estadistico) = CorridaDeLaMedia.EsAleatorio(datosPruebaCorrida.Comparador, datosPruebaCorrida.ValoresU);
+            var response = new
+            {
+                EsAleatorio = esAleatorio,
+                Estadistico = estadistico,
+            };
+            return Ok(response);
+        }
+        catch (Exception ex)
         {
             return BadRequest(ex.Message);
         }
