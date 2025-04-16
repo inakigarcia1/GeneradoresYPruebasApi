@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GeneradoresYPruebas.Dominio.Excepciones;
+using GeneradoresYPruebas.Dominio.Generadores;
 
 namespace GeneradoresYPruebas.Generadores;
 public class Lehmer

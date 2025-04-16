@@ -3,11 +3,11 @@
 public class RespuestaPruebaEstadistica
 {
     public bool EsAleatorio { get; set; }
-    public double Comparador { get; set; }
+    public double Estadistico { get; set; }
 
-    public RespuestaPruebaEstadistica(bool esAleatorio, double comparador)
+    public RespuestaPruebaEstadistica(bool esAleatorio, double estadistico)
     {
         EsAleatorio = esAleatorio;
-        Comparador = comparador;
+        Estadistico = estadistico;
     }
 }

@@ -1,4 +1,6 @@
 
+using GeneradoresYPruebas.Api.Middlewares;
+
 namespace GeneradoresYPruebas.Api
 {
     public class Program
@@ -32,7 +34,7 @@ namespace GeneradoresYPruebas.Api
             var app = builder.Build();
 
             app.UseCors();
-
+            app.UseMiddleware<ExceptionMiddleware>();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

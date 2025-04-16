@@ -14,95 +14,41 @@ public class PruebasEstadisticasController : ControllerBase
     [HttpPost("promedios")]
     public IActionResult PruebaDePromedios([FromBody] DatosPruebaPromedio datosPruebaPromedio)
     {
-        try
-        {
-            var resultado = Promedios.EsAleatorio(datosPruebaPromedio.Comparador, datosPruebaPromedio.ValoresU);
-            var response = new
-            {
-                EsAleatorio = resultado.esAleatorio,
-                Estadistico = resultado.estadistico,
-            };
-            return Ok(response);
-        }
-        catch (Exception ex)
-        {
-            return BadRequest(ex.Message);
-        }
+        var (esAleatorio, estadistico) = Promedios.EsAleatorio(datosPruebaPromedio.Comparador, datosPruebaPromedio.ValoresU);
+        return CrearRespuesta(esAleatorio, estadistico);
     }
 
     [HttpPost("frecuencia")]
     public IActionResult PruebaDeFrecuencia([FromBody] DatosPruebaFrecuencia datosPruebaFrecuencia)
     {
-        try
-        {
-            var (esAleatorio, estadistico) = Frecuencia.EsAleatorio(datosPruebaFrecuencia.X, datosPruebaFrecuencia.Comparador, datosPruebaFrecuencia.ValoresU);
-            var response = new
-            {
-                EsAleatorio = esAleatorio,
-                Estadistico = estadistico,
-            };
-            return Ok(response);
-        }
-        catch(Exception ex)
-        {
-            return BadRequest(ex.Message);
-        }
+        var (esAleatorio, estadistico) = Frecuencia.EsAleatorio(datosPruebaFrecuencia.X, datosPruebaFrecuencia.Comparador, datosPruebaFrecuencia.ValoresU);
+        return CrearRespuesta(esAleatorio, estadistico);
     }
 
     [HttpPost("series")]
     public IActionResult PruebaDeLaSerie([FromBody] DatosPruebaSerie datosPruebaSerie)
     {
-        try
-        {
-            var (esAleatorio, estadistico) = Series.EsAleatorio(datosPruebaSerie.X, datosPruebaSerie.Comparador, datosPruebaSerie.N, datosPruebaSerie.ValoresU);
-            var response = new
-            {
-                EsAleatorio = esAleatorio,
-                Estadistico = estadistico,
-            };
-            return Ok(response);
-        }
-        catch (Exception ex)
-        {
-            return BadRequest(ex.Message);
-        }
+        var (esAleatorio, estadistico) = Series.EsAleatorio(datosPruebaSerie.X, datosPruebaSerie.Comparador, datosPruebaSerie.N, datosPruebaSerie.ValoresU);
+        return CrearRespuesta(esAleatorio, estadistico);
     }
 
     [HttpPost("ks")]
     public IActionResult PruebaDeKs([FromBody] DatosPruebaKs datosPruebaKs)
     {
-        try
-        {
-            var (esAleatorio, estadistico) = Ks.EsAleatorio(datosPruebaKs.Comparador, datosPruebaKs.ValoresU);
-            var response = new
-            {
-                EsAleatorio = esAleatorio,
-                Estadistico = estadistico,
-            };
-            return Ok(response);
-        }
-        catch (Exception ex)
-        {
-            return BadRequest(ex.Message);
-        }
+        var (esAleatorio, estadistico) = Ks.EsAleatorio(datosPruebaKs.Comparador, datosPruebaKs.ValoresU);
+        return CrearRespuesta(esAleatorio, estadistico);
     }
+   
 
     [HttpPost("corrida")]
     public IActionResult PruebaDeCorrida([FromBody] DatosPruebaCorrida datosPruebaCorrida)
     {
-        try
-        {
-            var (esAleatorio, estadistico) = CorridaDeLaMedia.EsAleatorio(datosPruebaCorrida.Comparador, datosPruebaCorrida.ValoresU);
-            var response = new
-            {
-                EsAleatorio = esAleatorio,
-                Estadistico = estadistico,
-            };
-            return Ok(response);
-        }
-        catch (Exception ex)
-        {
-            return BadRequest(ex.Message);
-        }
+        var (esAleatorio, estadistico) = CorridaDeLaMedia.EsAleatorio(datosPruebaCorrida.Comparador, datosPruebaCorrida.ValoresU);
+        return CrearRespuesta(esAleatorio, estadistico);
+    }
+
+    private IActionResult CrearRespuesta(bool esAleatorio, double estadistico)
+    {
+        return Ok(new RespuestaPruebaEstadistica(esAleatorio: esAleatorio, estadistico: estadistico));
     }
 }
