@@ -34,16 +34,22 @@ public class Lehmer
     }
     private static (double numero, bool esUltimo) ObtenerSiguienteNumero(double semilla, double t, double k)
     {
-        if(semilla < 0) return (0, true); // No se pueden generar más números
-
+        // No se pueden generar más números
+        if (semilla < 0) return (-1, true);
         if (k >= semilla.ToString().Length) return (-1, true);
 
         var multiplicacionTexto = (semilla * t).ToString();
-
         var restar = new string(multiplicacionTexto.Take((int)k).ToArray());
-
         multiplicacionTexto = multiplicacionTexto.Remove(0, (int)k);
 
-        return (double.Parse(multiplicacionTexto) - double.Parse(restar), false);
+        // No se pueden generar más números
+        if (multiplicacionTexto == "0" && restar != "0") return (-1, true);
+
+        (double numero, bool esUltimo) resultado = (double.Parse(multiplicacionTexto) - double.Parse(restar), false);
+
+        if (resultado.numero < 0)
+            return (Math.Abs(resultado.numero), true);
+
+        return resultado;
     }
 }
