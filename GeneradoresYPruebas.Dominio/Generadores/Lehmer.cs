@@ -12,7 +12,7 @@ public class Lehmer
     public static List<double> ObtenerNumerosAleatorios(double semilla, double t, double k, double cantidadDeNumerosAGenerar)
     {
         if (semilla < 0) throw new InvalidDataException("La semilla no puede ser negativa.");
-        if (k >= semilla) throw new InvalidDataException("K debe ser menor que la semilla.");
+        if (k >= semilla.ToString().Length) throw new InvalidDataException("K debe ser menor que la longitud semilla.");
 
         var numerosAleatorios = new List<double>();
         (double numero, bool esUltimo) resultado = (semilla, false);
@@ -36,7 +36,7 @@ public class Lehmer
     {
         if(semilla < 0) return (0, true); // No se pueden generar más números
 
-        if (k >= semilla) throw new InvalidDataException("K debe ser menor que la semilla.");
+        if (k >= semilla.ToString().Length) return (-1, true);
 
         var multiplicacionTexto = (semilla * t).ToString();
 
